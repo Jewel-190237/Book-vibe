@@ -2,6 +2,7 @@
 // import Book from "../Book/Book";
 
 import { useEffect, useState } from "react";
+import Book from "../Book/Book";
 
 const Books = () => {
 
@@ -13,11 +14,13 @@ const Books = () => {
         .then(data => setBooks(data))
     },[books])
 
-    console.log(books)
+    
 
     return (
-        <div>
-            <h3>Books: {books.length}</h3>
+        <div className="grid md:grid-cols-3"> 
+            {
+                books.map(book => <Book key={book.bookId} book={book}></Book>)
+            }
         </div>
     );
 };
