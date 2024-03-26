@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { useEffect, useState } from "react";
 import Book from "../Book/Book";
@@ -11,26 +12,25 @@ const Books = () => {
         fetch('books.json')
             .then(res => res.json())
             .then(data => setBooks(data))
-    }, [books])
-
-
+    }, [])
+     
     return (
         <div>
             <h2 className="text-3xl text-center font-bold">Books</h2>
             <div >
-                <Link to={`${books.bookId}`}>
+                {/* <Link to={`${books.bookId}`}>
                     <button className="grid md:grid-cols-3 gap-4">
                         {
                             books.map(book => <Book key={book.bookId} book={book}></Book>)
                         }
                     </button>
-                </Link>
+                </Link> */}
 
-                {/* <button className="grid md:grid-cols-3 gap-4">
+                <button className="grid md:grid-cols-3 gap-4">
                     {
                         books.map(book => <Book key={book.bookId} book={book}></Book>)
                     }
-                </button> */}
+                </button>
             </div>
 
         </div>
