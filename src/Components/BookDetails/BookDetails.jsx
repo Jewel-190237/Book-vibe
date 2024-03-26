@@ -9,10 +9,9 @@ const BookDetails = () => {
     const { bookId } = useParams()
     const idInt = parseInt(bookId)
     const book = books.find(book => book.bookId == idInt)
-    console.log(book)
     return (
         <div>
-            
+            <h2>Jewel: {book.bookId}</h2>
         </div>
     );
 };
