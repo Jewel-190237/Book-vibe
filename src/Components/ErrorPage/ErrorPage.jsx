@@ -14,7 +14,6 @@ const ErrorPage = () => {
                 </p>
             </div>
         );
-
     
 };
 

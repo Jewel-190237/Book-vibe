@@ -2,12 +2,18 @@ import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getListedBooks } from "../Utility/LocalStorage";
 import SingleListedBook from "../SingleListedBook/SingleListedBook";
+import WishList from "../WishList/WishList";
+import { getWishesList } from "../Utility/WishesLocalStorage";
 
 const ListedBooks = () => {
 
     const [displayBooks, setDisplayBooks] = useState([])
 
+    const [wishList, setWishesList] = useState([])
+
     const books = useLoaderData();
+
+ 
 
     useEffect(() => {
         const storeBookIds = getListedBooks()
@@ -17,6 +23,17 @@ const ListedBooks = () => {
             setDisplayBooks(booksListed)
         }
     }, [])
+
+    useEffect(() => {
+        const wishesIds = getWishesList()
+
+        if(books.length > 0){
+            const wishesBooks = books.filter(wishes => wishesIds.includes(wishes.bookId))
+            setWishesList(wishesBooks)
+        }
+    },[])
+
+
     return (
         <div>
 
@@ -39,7 +56,7 @@ const ListedBooks = () => {
 
 
             <div role="tablist" className="tabs tabs-lifted">
-                <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Read List" />
+                <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Read List" />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
                     {
@@ -48,11 +65,11 @@ const ListedBooks = () => {
 
                 </div>
 
-                <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Wish List" checked />
+                <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Wish List" checked />
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
                     {
-                        displayBooks.map(book => <SingleListedBook key={book.bookId} book={book}></SingleListedBook>)
+                        wishList.map(book => <WishList key={book.bookId} book={book}></WishList>)
                     }
 
                 </div>

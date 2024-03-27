@@ -12,7 +12,6 @@ const Banner = () => {
                         <Link to={'/listedBooks'}>
                             <button className="btn mt-8 bg-[#23BE0A] text-white">View The List</button>
                         </Link>
-
                     </div>
                 </div>
             </div>
