@@ -18,14 +18,6 @@ const Books = () => {
         <div>
             <h2 className="text-3xl text-center font-bold">Books</h2>
             <div >
-                {/* <Link to={`${books.bookId}`}>
-                    <button className="grid md:grid-cols-3 gap-4">
-                        {
-                            books.map(book => <Book key={book.bookId} book={book}></Book>)
-                        }
-                    </button>
-                </Link> */}
-
                 <button className="grid md:grid-cols-3 gap-4">
                     {
                         books.map(book => <Book key={book.bookId} book={book}></Book>)
