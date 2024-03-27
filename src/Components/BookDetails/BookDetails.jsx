@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLoaderData, useParams } from "react-router-dom";
+import { getListedBooks, saveListedBooks } from "../Utility/LocalStorage";
 
 const BookDetails = () => {
 
@@ -9,6 +11,11 @@ const BookDetails = () => {
     const { bookId } = useParams()
     const idInt = parseInt(bookId)
     const book = books.find(book => book.bookId == idInt)
+
+    const handleReadBooks = () =>{
+        saveListedBooks(idInt)
+    }
+    
     return (
         <div>
             <div>
@@ -45,15 +52,15 @@ const BookDetails = () => {
                                     <p className="mr-52">Rating:</p>
                                     <p className="font-bold">{book.rating}</p>
                                 </div>
-                                
                             </div>
                             <div className="flex gap-8">
-                                <button className="btn btn-primary mt-8">Read</button>
+                                <button onClick={handleReadBooks} className="btn btn-primary mt-8">Read</button>
                                 <button className="btn btn-primary mt-8">Wish List</button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <ToastContainer></ToastContainer>
             </div>
         </div>
     );
