@@ -65,7 +65,7 @@ const BookDetails = () => {
                             <div className="flex gap-8">
                                 <button onClick={handleListedBooks} className="btn btn-outline btn-success mt-8">Read</button>
                                 <button onClick={handleWishesBooks} className="btn  mt-8 bg-[#50B1C9] text-white">Wish List</button>
-                                <button onClick={handleSellBooks} className="btn  mt-8 bg-[#50B1C9] text-white">Sell</button>
+                                <button onClick={handleSellBooks} className="btn  mt-8 bg-[#50B1C9] text-white">Sell Book</button>
                             </div>
                         </div>
                     </div>
