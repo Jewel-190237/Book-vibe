@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import { getListedBooks, saveListedBooks } from "../Utility/LocalStorage";
 import { saveWishesList } from '../Utility/WishesLocalStorage';
+import { saveSoldBooks } from '../Utility/SoldBookLocalStorage';
 
 const BookDetails = () => {
 
@@ -19,6 +20,9 @@ const BookDetails = () => {
 
     const handleWishesBooks = () => {
         saveWishesList(idInt)
+    }
+    const handleSellBooks = () => {
+        saveSoldBooks(idInt)
     }
 
     return (
@@ -61,6 +65,7 @@ const BookDetails = () => {
                             <div className="flex gap-8">
                                 <button onClick={handleListedBooks} className="btn btn-outline btn-success mt-8">Read</button>
                                 <button onClick={handleWishesBooks} className="btn  mt-8 bg-[#50B1C9] text-white">Wish List</button>
+                                <button onClick={handleSellBooks} className="btn  mt-8 bg-[#50B1C9] text-white">Sell</button>
                             </div>
                         </div>
                     </div>

@@ -15,6 +15,7 @@ import ListedBooks from './Components/ListedBooks/ListedBooks.jsx';
 import Books from './Components/Books/Books.jsx';
 import BookDetails from './Components/BookDetails/BookDetails.jsx';
 import CustomShapeBarChart from './Components/PagesToRead/CustomShapeBarChart.jsx';
+import SingleSoldBook from './Components/SoldBooks/SingleSoldBook.jsx';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: '/bookDetails/:bookId',
         element: <BookDetails></BookDetails>,
+        loader: () => fetch('../books.json')
+      },
+      {
+        path: '/soldBooks',
+        element: <SingleSoldBook></SingleSoldBook>,
         loader: () => fetch('../books.json')
       }
     ]

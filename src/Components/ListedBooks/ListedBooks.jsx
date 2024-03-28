@@ -5,15 +5,14 @@ import SingleListedBook from "../SingleListedBook/SingleListedBook";
 import WishList from "../WishList/WishList";
 import { getWishesList } from "../Utility/WishesLocalStorage";
 
+
 const ListedBooks = () => {
 
     const [displayBooks, setDisplayBooks] = useState([])
 
     const [wishList, setWishesList] = useState([])
 
-    const books = useLoaderData();
-
- 
+    const books = useLoaderData();5
 
     useEffect(() => {
         const storeBookIds = getListedBooks()
@@ -34,9 +33,9 @@ const ListedBooks = () => {
     },[])
 
 
-    return (
-        <div>
 
+    return (
+        <div> 
             <div className="card bg-[#1313130D]">
                 <div className="card-body items-center text-center">
                     <h2 className="card-title text-3xl">Books </h2>

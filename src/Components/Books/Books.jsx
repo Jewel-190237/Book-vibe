@@ -16,9 +16,13 @@ const Books = () => {
 
     return (
         <div>
-            <h2 className="text-3xl text-center font-bold">Books</h2>
+            <div className="card bg-[#1313130D]">
+                <div className="card-body items-center text-center">
+                    <h2 className="card-title text-3xl">All Books</h2>
+                </div>
+            </div>
             <div >
-                <button className="grid md:grid-cols-3 gap-36 justify-between ml-10">
+                <button className="mt-10 grid md:grid-cols-3 gap-36 justify-between ml-10">
                     {
                         books.map(book => <Book key={book.bookId} book={book}></Book>)
 
