@@ -16,7 +16,7 @@ const Books = () => {
 
     return (
         <div>
-            <div className="card bg-[#1313130D]">
+            <div className="card bg-[#1313130D] mt-10">
                 <div className="card-body items-center text-center">
                     <h2 className="card-title text-3xl">All Books</h2>
                 </div>

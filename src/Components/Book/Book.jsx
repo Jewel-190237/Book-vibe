@@ -26,10 +26,9 @@ const Book = ({ book }) => {
                     <hr />
                     <div className="flex justify-between">
                         <p className="p-6">{category}</p>
-                        <p className=" p-6 flex justify-center align-middle gap-2">
-                            <span>{rating}</span>
-                            <span> <CiStar></CiStar> </span>
-                        </p>
+                        <div className="p-6 gap-2">
+                            <p className="flex"> {rating} <span><CiStar></CiStar></span></p>
+                        </div>
                     </div>
                 </div>
             </div>

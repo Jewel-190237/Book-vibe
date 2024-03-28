@@ -1,52 +1,38 @@
-/* eslint-disable react/jsx-no-undef */
-/* eslint-disable no-unused-vars */
-
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid } from 'recharts';
+/* eslint-disable react/prop-types */
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', 'red', 'pink'];
 
 const data = [
   {
-    name: 'Page A',
-    uv: 4000,
+    name: 'Harry Potter',
+    pages: 310,
     pv: 2400,
     amt: 2400,
   },
   {
-    name: 'Page B',
-    uv: 3000,
+    name: 'The Da Vinci Code',
+    pages: 454,
     pv: 1398,
     amt: 2210,
   },
   {
-    name: 'Page C',
-    uv: 2000,
+    name: '1984',
+    pages: 328,
     pv: 9800,
     amt: 2290,
   },
   {
-    name: 'Page D',
-    uv: 2780,
+    name: 'The Hobbit',
+    pages: 310,
     pv: 3908,
     amt: 2000,
   },
   {
-    name: 'Page E',
-    uv: 1890,
+    name: 'The Great Gatsby',
+    pages: 180,
     pv: 4800,
     amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
   },
 ];
 
@@ -57,12 +43,17 @@ const getPath = (x, y, width, height) => {
   Z`;
 };
 
+const TriangleBar = (props) => {
+  const { fill, x, y, width, height } = props;
 
-export default function App() {
+  return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;
+};
+
+const ShapeChart = () => {
   return (
     <BarChart
-      width={500}
-      height={300}
+      width={1000}
+      height={500}
       data={data}
       margin={{
         top: 20,
@@ -74,13 +65,24 @@ export default function App() {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
-      <Bar dataKey="uv" fill="#8884d8"  label={{ position: 'top' }}>
+      <Tooltip />
+      <Bar dataKey="pages" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
         {data.map((entry, index) => (
           <Cell key={`cell-${index}`} fill={colors[index % 20]} />
         ))}
       </Bar>
     </BarChart>
   );
-}
+};
 
-App.demoUrl = 'https://codesandbox.io/s/bar-chart-with-customized-shape-dusth';
+const PagesToRead = () => {
+    return (
+        <div className='bg-slate-200'>
+            <div className='p-10 mt-10'>
+            <ShapeChart />
+            </div>
+        </div>
+    );
+};
+
+export default PagesToRead;
