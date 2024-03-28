@@ -18,12 +18,12 @@ const saveWishesList = id => {
     const isExitsListedBooks = listedBooksId.find(listedId => id == listedId)
 
     if(!isExitsListedBooks && !isExitsWishesBooks){
-        toast('Book Added Successfully in Wish List')
+        toast.success('Book Added Successfully in Wish List')
         wishesBookList.push(id)
         localStorage.setItem('wishes-list', JSON.stringify(wishesBookList))
     }
     else {
-        toast('Book Already Added in Wish List')
+        toast.error('Book Already Added in Wish List')
     }
     <ToastContainer></ToastContainer>
 }

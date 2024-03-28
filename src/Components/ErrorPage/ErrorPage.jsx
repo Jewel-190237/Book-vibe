@@ -8,9 +8,9 @@ const ErrorPage = () => {
     return (
         <div className=" mt-28 text-center justify-center align-middle" id="error-page">
             <h1 className="text-4xl">Oops!!</h1> 
-            {/* <p>
+            <p>
                 <i>{error.statusText || error.message}</i>
-            </p> */}
+            </p>
             {
                 error.status === 404 && <div>
                     <h2 className="text-3xl">Page not Found</h2>
