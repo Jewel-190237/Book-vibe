@@ -16,12 +16,12 @@ const saveListedBooks = id =>  {
     const isExits = storedBooks.find(bookId => id == bookId)
 
     if(!isExits){
-        toast('Book Added Successfully')
+        toast.success('Book Added Successfully')
         storedBooks.push(id)
         localStorage.setItem('listed-books', JSON.stringify(storedBooks))
     }
     else{
-        toast('Book Already Added')
+        toast.error('Book Already Added')
     }
     <ToastContainer></ToastContainer>
 }

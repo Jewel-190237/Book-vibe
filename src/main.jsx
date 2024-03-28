@@ -10,12 +10,11 @@ import {
 import Root from './Components/Root/Root.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import Home from './Components/Home/Home.jsx';
-import Navbar from './Components/Navbar/Navbar.jsx';
 import Banner from './Components/Banner/Banner.jsx';
-import PagesToRead from './Components/PagesToRead/PagesToRead.jsx';
 import ListedBooks from './Components/ListedBooks/ListedBooks.jsx';
 import Books from './Components/Books/Books.jsx';
 import BookDetails from './Components/BookDetails/BookDetails.jsx';
+import CustomShapeBarChart from './Components/PagesToRead/CustomShapeBarChart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,10 +27,6 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        path: '/navbar',
-        element: <Navbar></Navbar>
-      },
-      {
         path: '/banner',
         element: <Banner></Banner>
       },
@@ -42,7 +37,8 @@ const router = createBrowserRouter([
       },
       {
         path: '/pagesToRead',
-        element: <PagesToRead></PagesToRead>
+        element: <CustomShapeBarChart></CustomShapeBarChart>
+        
       },
       {
         path:'/books',
