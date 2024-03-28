@@ -14,8 +14,8 @@ import Banner from './Components/Banner/Banner.jsx';
 import ListedBooks from './Components/ListedBooks/ListedBooks.jsx';
 import Books from './Components/Books/Books.jsx';
 import BookDetails from './Components/BookDetails/BookDetails.jsx';
-import CustomShapeBarChart from './Components/PagesToRead/CustomShapeBarChart.jsx';
 import SingleSoldBook from './Components/SoldBooks/SingleSoldBook.jsx';
+import PagesToRead from './Components/PagesToRead/PagesToRead.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,8 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/pagesToRead',
-        element: <CustomShapeBarChart></CustomShapeBarChart>
-        
+        element: <PagesToRead></PagesToRead>
       },
       {
         path:'/books',

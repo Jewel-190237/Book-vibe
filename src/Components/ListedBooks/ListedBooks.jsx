@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { getListedBooks } from "../Utility/LocalStorage";
@@ -9,10 +10,12 @@ import { getWishesList } from "../Utility/WishesLocalStorage";
 const ListedBooks = () => {
 
     const [displayBooks, setDisplayBooks] = useState([])
+    const [filterBooks, setFilterBooks] = useState([])
 
     const [wishList, setWishesList] = useState([])
 
-    const books = useLoaderData();5
+    const books = useLoaderData();
+
 
     useEffect(() => {
         const storeBookIds = getListedBooks()
@@ -20,6 +23,7 @@ const ListedBooks = () => {
         if (books.length > 0) {
             const booksListed = books.filter(book => storeBookIds.includes(book.bookId));
             setDisplayBooks(booksListed)
+            setFilterBooks(booksListed)
         }
     }, [])
 
@@ -28,11 +32,29 @@ const ListedBooks = () => {
 
         if(books.length > 0){
             const wishesBooks = books.filter(wishes => wishesIds.includes(wishes.bookId))
+            setDisplayBooks(wishesBooks)
             setWishesList(wishesBooks)
         }
     },[])
 
-
+    
+    const handleRating = filter => {
+        if(filter === 'rating'){
+            const rating = filterBooks.sort((a, b) => b.rating - a.rating)
+            setFilterBooks(rating)
+            console.log(rating)
+        }
+        else if(filter === 'page'){
+            const page = filterBooks.sort((a, b) => b.totalPages - a.totalPages)
+            setFilterBooks(page)
+            console.log(page)
+        }
+        else if(filter === 'year'){
+            const year = filterBooks.sort((a, b) => b.yearOfPublishing - a.yearOfPublishing)
+            setFilterBooks(year)
+            console.log(year)
+        }
+    }
 
     return (
         <div> 
@@ -46,9 +68,9 @@ const ListedBooks = () => {
                 <details className="dropdown">
                     <summary className="m-1 btn px-12 bg-[#23BE0A]">Sort By</summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-40">
-                        <li><a>Rating</a></li>
-                        <li><a>Number of Pages</a></li>
-                        <li><a>Publisher Year</a></li>
+                        <li onClick={() =>handleRating('rating')}><a>Rating</a></li>
+                        <li onClick={() =>handleRating('page')}><a>Number of Pages</a></li>
+                        <li onClick={() =>handleRating('year')}><a>Publisher Year</a></li>
                     </ul>
                 </details>
             </div>
@@ -59,7 +81,7 @@ const ListedBooks = () => {
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
                     {
-                        displayBooks.map(book => <SingleListedBook key={book.bookId} book={book}></SingleListedBook>)
+                        filterBooks.map(book => <SingleListedBook key={book.bookId} book={book}></SingleListedBook>)
                     }
 
                 </div>
@@ -68,7 +90,7 @@ const ListedBooks = () => {
                 <div role="tabpanel" className="tab-content bg-base-100 border-base-300 rounded-box p-6">
 
                     {
-                        wishList.map(book => <WishList key={book.bookId} book={book}></WishList>)
+                        filterBooks.map(book => <WishList key={book.bookId} book={book}></WishList>)
                     }
 
                 </div>
