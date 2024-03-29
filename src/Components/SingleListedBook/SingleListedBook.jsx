@@ -6,8 +6,6 @@ import { IoPeople } from "react-icons/io5";
 import { RiPagesLine } from "react-icons/ri";
 import { IoLocationOutline } from "react-icons/io5";
 
-
-
 const SingleListedBook = ({ book }) => {
 
     const { bookName, image, author, rating, tags, totalPages, category, publisher, yearOfPublishing } = book
